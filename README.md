@@ -1,17 +1,41 @@
-# baloon_slider_2
+# Flutter Balloon Slider
 
-A new Flutter project.
+A Flutter plugin to create range slider with balloon animation effect.
 
-## Getting Started
+Inspired by [Cuberto - Balloon Slider](https://dribbble.com/shots/6549207-Balloon-Slider-Control)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+* Add this to your pubspec.yaml
+  ```
+  dependencies:
+  balloon_slider: ^0.0.1
+  ```
+* Get the package from Pub:
+  ```
+  flutter packages get
+  ```
+* Import it in your file
+  ```
+  import 'package:balloon_slider/balloon_slider.dart';
+  ```
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+...
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# baloon-slider-flutter
+## Usage
+
+``` dart
+// todo
+```
+
+## Credits
+
+ * [Cuberto - Balloon Slider](https://dribbble.com/shots/6549207-Balloon-Slider-Control)
+
+## Maintainers
+ 
+ * [Olena Zhukova](https://github.com/himym1989)
+ 
+## License
+
+ [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
