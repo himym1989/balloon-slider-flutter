@@ -2,31 +2,33 @@ import 'package:flutter/material.dart';
 
 import 'slider.dart';
 
-class BaloonSlider extends StatefulWidget {
-  const BaloonSlider({
+class BalloonSlider extends StatefulWidget {
+  const BalloonSlider({
     Key? key,
-    required this.sliderValue,
+    required this.value,
     this.color = Colors.black,
-    this.baloonWidth = 50,
+    this.balloonWidth = 50,
     this.thumbSize = 12,
     this.thumbColor,
     this.activeTrackColor,
     this.inactiveTrackColor,
+    this.balloonTextStyle,
   }) : super(key: key);
 
-  final double baloonWidth;
+  final double balloonWidth;
   final double thumbSize;
   final Color? thumbColor;
   final Color? activeTrackColor;
   final Color? inactiveTrackColor;
   final Color color;
-  final ValueNotifier<double> sliderValue;
+  final TextStyle? balloonTextStyle;
+  final ValueNotifier<double> value;
 
   @override
-  State<BaloonSlider> createState() => _BaloonSliderState();
+  State<BalloonSlider> createState() => _BalloonSliderState();
 }
 
-class _BaloonSliderState extends State<BaloonSlider>
+class _BalloonSliderState extends State<BalloonSlider>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late double value;
@@ -50,13 +52,14 @@ class _BaloonSliderState extends State<BaloonSlider>
   Widget build(BuildContext context) {
     return Center(
       child: SliderRender(
+        balloonTextStyle: widget.balloonTextStyle,
         activeTrackColor: widget.activeTrackColor ?? widget.color,
         inactiveTrackColor: widget.inactiveTrackColor ?? widget.color,
         thumbColor: widget.thumbColor ?? widget.color,
         thumbSize: widget.thumbSize,
-        baloonWidth: widget.baloonWidth,
-        value: widget.sliderValue.value,
-        onChanged: (value) => widget.sliderValue.value = value,
+        balloonWidth: widget.balloonWidth,
+        value: widget.value.value,
+        onChanged: (value) => widget.value.value = value,
         animationController: animationController,
       ),
     );

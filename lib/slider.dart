@@ -1,6 +1,6 @@
-import 'dart:async';
 import 'dart:math';
 
+import 'package:balloon_slider/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -13,10 +13,11 @@ class SliderRender extends SingleChildRenderObjectWidget {
   final Color activeTrackColor;
   final Color thumbColor;
   final double thumbSize;
-  final double baloonWidth;
+  final double balloonWidth;
   final double value;
   final AnimationController animationController;
   final ValueChanged<double> onChanged;
+  final TextStyle? balloonTextStyle;
 
   const SliderRender({
     required this.animationController,
@@ -24,16 +25,18 @@ class SliderRender extends SingleChildRenderObjectWidget {
     required this.activeTrackColor,
     required this.thumbColor,
     required this.thumbSize,
-    required this.baloonWidth,
+    required this.balloonWidth,
     required this.value,
     required this.onChanged,
+    this.balloonTextStyle,
     Key? key,
   }) : super(key: key);
 
   @override
   RenderObject createRenderObject(context) {
     return SliderRenderBox(
-      baloonWidth: baloonWidth,
+      balloonTextStyle: balloonTextStyle,
+      balloonWidth: balloonWidth,
       inactiveTrackColor: inactiveTrackColor,
       activeTrackColor: activeTrackColor,
       thumbColor: thumbColor,
@@ -50,6 +53,7 @@ class SliderRender extends SingleChildRenderObjectWidget {
       context,
       renderObject
         ..updateWith(
+          balloonTextStyle: balloonTextStyle,
           thumbSize: thumbSize,
           thumbColor: thumbColor,
           activeTrackColor: activeTrackColor,
@@ -64,6 +68,7 @@ class SliderRender extends SingleChildRenderObjectWidget {
 
     properties.add(ColorProperty('inactiveTrackColor', inactiveTrackColor));
     properties.add(ColorProperty('activeTrackColor', activeTrackColor));
+    properties.add(DiagnosticsProperty('balloonTextStyle', balloonTextStyle));
     properties.add(ColorProperty('thumbColor', thumbColor));
     properties.add(DoubleProperty('thumbSize', thumbSize));
   }
@@ -75,16 +80,17 @@ class SliderRenderBox extends RenderBox {
     required Color activeTrackColor,
     required Color thumbColor,
     required double thumbSize,
-    required double baloonWidth,
+    required double balloonWidth,
     required double value,
     required this.animationController,
     required this.onChanged,
+    this.balloonTextStyle,
   })  : _inactiveTrackColor = inactiveTrackColor,
         _activeTrackColor = activeTrackColor,
         _thumbColor = thumbColor,
         _thumbSize = thumbSize,
         _currentThumbValue = value,
-        _baloonWidth = baloonWidth {
+        _balloonWidth = balloonWidth {
     _drag = HorizontalDragGestureRecognizer()
       ..onStart = (DragStartDetails details) {
         moving = true;
@@ -108,10 +114,12 @@ class SliderRenderBox extends RenderBox {
   final Debouncer _endTimer = Debouncer(milliseconds: 1000);
   late HorizontalDragGestureRecognizer _drag;
 
+  final TextStyle? balloonTextStyle;
+
   bool moving = false;
   double _currentThumbValue;
   double? initOffset;
-  double _baloonWidth;
+  double _balloonWidth;
   double _balloonScale = 0.0;
   Color _inactiveTrackColor;
   Color _activeTrackColor;
@@ -119,17 +127,18 @@ class SliderRenderBox extends RenderBox {
   double _thumbSize;
 
   void updateWith({
-    double? baloonWidth,
+    double? balloonWidth,
     double? thumbSize,
     Color? thumbColor,
     Color? inactiveTrackColor,
     Color? activeTrackColor,
+    TextStyle? balloonTextStyle,
   }) {
     _inactiveTrackColor = inactiveTrackColor ?? _inactiveTrackColor;
     _activeTrackColor = activeTrackColor ?? _activeTrackColor;
     _thumbColor = thumbColor ?? _thumbColor;
     _thumbSize = thumbSize ?? _thumbSize;
-    _baloonWidth = baloonWidth ?? _baloonWidth;
+    _balloonWidth = balloonWidth ?? _balloonWidth;
     markNeedsPaint();
   }
 
@@ -157,7 +166,7 @@ class SliderRenderBox extends RenderBox {
   @override
   void paint(PaintingContext context, Offset offset) {
     double trackHeight = 2;
-    double baloonHeight = _baloonWidth * 1.2987012987012987;
+    double baloonHeight = _balloonWidth * 1.2987012987012987;
 
     final canvas = context.canvas;
     canvas.save();
@@ -224,9 +233,9 @@ class SliderRenderBox extends RenderBox {
     initOffset ??= thumbRect.center.dx;
 
     Rect balloonRect = Rect.fromLTWH(
-      initOffset! - _baloonWidth / 2,
+      initOffset! - _balloonWidth / 2,
       offset.dy - baloonHeight / 2 - baloonHeight - 5,
-      _baloonWidth,
+      _balloonWidth,
       baloonHeight,
     );
 
@@ -262,6 +271,7 @@ class SliderRenderBox extends RenderBox {
     canvas.translate(0, _balloonScale * -50);
 
     BalloonPainter(
+      textStyle: balloonTextStyle,
       color: _thumbColor,
       value: _currentThumbValue,
     ).paint(canvas, balloonRect.size);
@@ -291,17 +301,5 @@ class SliderRenderBox extends RenderBox {
       markNeedsPaint();
       animationController.repeat();
     });
-  }
-}
-
-class Debouncer {
-  final int milliseconds;
-  Timer? _timer;
-
-  Debouncer({required this.milliseconds});
-
-  run(VoidCallback action) {
-    _timer?.cancel();
-    _timer = Timer(Duration(milliseconds: milliseconds), action);
   }
 }

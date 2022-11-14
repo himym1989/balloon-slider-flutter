@@ -4,9 +4,11 @@ class BalloonPainter extends CustomPainter {
   const BalloonPainter({
     required this.color,
     this.value = 0,
+    this.textStyle,
   });
 
   final Color color;
+  final TextStyle? textStyle;
   final double value;
 
   @override
@@ -167,8 +169,8 @@ class BalloonPainter extends CustomPainter {
       textWidthBasis: TextWidthBasis.parent,
       text: TextSpan(
         text: '${(this.value * 100).toInt()}',
-        style: const TextStyle(
-          color: Colors.black,
+        style: textStyle ?? const TextStyle(
+          color: Colors.black26,
           fontSize: 18,
           fontWeight: FontWeight.w600,
         ),
