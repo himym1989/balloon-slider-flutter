@@ -6,7 +6,7 @@ Inspired by [Cuberto - Balloon Slider](https://dribbble.com/shots/6549207-Balloo
 
 
 [![Build Status](https://github.com/tiamo/flutter-simple-map/actions/workflows/ci.yml/badge.svg)](https://github.com/himym1989/baloon-slider-flutter)
-[![Pub package](https://img.shields.io/pub/v/simple_map.svg)](https://pub.dartlang.org/packages/simple_map)
+[![Pub package](https://img.shields.io/pub/v/balloon_slider.svg)](https://pub.dartlang.org/packages/balloon_slider)
 [![Star on GitHub](https://img.shields.io/github/stars/himym1989/baloon-slider-flutter.svg?style=flat&logo=github&colorB=deeppink&label=stars)](https://github.com/himym1989/baloon-slider-flutter)
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 
