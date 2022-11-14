@@ -4,8 +4,7 @@ A Flutter plugin to create range slider with balloon animation effect.
 
 Inspired by [Cuberto - Balloon Slider](https://dribbble.com/shots/6549207-Balloon-Slider-Control)
 
-<img src="./screens/1.gif" width="200">
-<img src="./screens/2.gif" width="200">
+<img src="./screens/1.gif" width="200"><img src="./screens/2.gif" width="200">
 
 
 
