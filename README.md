@@ -2,9 +2,7 @@
 
 A Flutter plugin to create range slider with balloon animation effect.
 
-Inspired by [Cuberto - Balloon![ezgif com-gif-maker]
-
- Slider](https://dribbble.com/shots/6549207-Balloon-Slider-Control)
+Inspired by [Cuberto - Balloon Slider](https://dribbble.com/shots/6549207-Balloon-Slider-Control)
 ![balloon_demo]
 
 * Add this to your pubspec.yaml
