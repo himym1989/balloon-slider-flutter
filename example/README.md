@@ -1,3 +1,3 @@
-# baloon-slider-flutter
+# Flutter Balloon Slider Example
 
 ...
