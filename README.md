@@ -10,6 +10,8 @@ Inspired by [Cuberto - Balloon Slider](https://dribbble.com/shots/6549207-Balloo
 
 <img src="./screens/1.gif" width="241"> &nbsp; <img src="./screens/2.gif" width="240">
 
+## Getting Started
+
 * Add this to your pubspec.yaml
   ```
   dependencies:
