@@ -11,7 +11,7 @@ Inspired by [Cuberto - Balloon Slider](https://dribbble.com/shots/6549207-Balloo
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 
 
-<img src="./screens/1.gif" width="242"> &nbsp; <img src="./screens/2.gif" width="240">
+<img src="./screens/1.gif" width="241"> &nbsp; <img src="./screens/2.gif" width="240">
 
 
 * Add this to your pubspec.yaml
