@@ -1,7 +1,7 @@
 name: balloon_slider
 description: Flutter Balloon Slider
-version: 1.0.0+1
-homepage: 'https://github.com/himym1989/balloon-slider'
+version: 1.0.0
+homepage: 'https://github.com/himym1989/balloon-slider-flutter'
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
