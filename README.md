@@ -47,6 +47,7 @@ BalloonSlider(
 ## Maintainers
  
  * [Olena Zhukova](https://github.com/himym1989)
+ * [Vladyslav Korniienko](https://github.com/tiamo)
  
 ## License
 
