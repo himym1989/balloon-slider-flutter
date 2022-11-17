@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class ExampleSlider extends StatelessWidget {
   ExampleSlider({Key? key}) : super(key: key);
   final ValueNotifier<double> sliderValue = ValueNotifier<double>(0.0);
-  static const double balloonPrice = 2.5;
+  static const double balloonPrice = 3.5;
   static const Color basicColor = Colors.deepPurpleAccent;
   static const textColor = Colors.white;
 
